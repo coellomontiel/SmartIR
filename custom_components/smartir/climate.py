@@ -30,6 +30,13 @@ DEFAULT_DELAY = 0.5
 CONF_UNIQUE_ID = 'unique_id'
 CONF_DEVICE_CODE = 'device_code'
 CONF_CONTROLLER_DATA = "controller_data"
+CONF_CONTROLLER_DATA_ZHA_IEEE = "ieee"
+CONF_CONTROLLER_DATA_ZHA_ENDPOINT_ID = "endpoint_id"
+CONF_CONTROLLER_DATA_ZHA_CLUSTER_TYPE = "cluster_type"
+CONF_CONTROLLER_DATA_ZHA_COMMAND_TYPE = "command_type"
+CONF_CONTROLLER_DATA_ZHA_CLUSTER_ID = "cluster_id"
+CONF_CONTROLLER_DATA_ZHA_COMMAND = "command"
+CONF_CONTROLLER_DATA_ZHA_PARAMS = "params"
 CONF_DELAY = "delay"
 CONF_TEMPERATURE_SENSOR = 'temperature_sensor'
 CONF_HUMIDITY_SENSOR = 'humidity_sensor'
@@ -45,7 +52,17 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_UNIQUE_ID): cv.string,
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Required(CONF_DEVICE_CODE): cv.positive_int,
-    vol.Required(CONF_CONTROLLER_DATA): vol.Any(),
+    vol.Required(CONF_CONTROLLER_DATA): vol.Schema(
+        {
+            vol.Required(CONF_CONTROLLER_DATA_ZHA_IEEE): cv.string,
+            vol.Required(CONF_CONTROLLER_DATA_ZHA_ENDPOINT_ID): cv.positive_int,
+            vol.Required(CONF_CONTROLLER_DATA_ZHA_CLUSTER_TYPE): cv.string,
+            vol.Required(CONF_CONTROLLER_DATA_ZHA_COMMAND_TYPE): cv.string,
+            vol.Required(CONF_CONTROLLER_DATA_ZHA_CLUSTER_ID): cv.positive_int,
+            vol.Required(CONF_CONTROLLER_DATA_ZHA_COMMAND): cv.positive_int,
+            vol.Required(CONF_CONTROLLER_DATA_ZHA_PARAMS): cv.string,
+        }
+    ),
     vol.Optional(CONF_DELAY, default=DEFAULT_DELAY): cv.positive_float,
     vol.Optional(CONF_TEMPERATURE_SENSOR): cv.entity_id,
     vol.Optional(CONF_HUMIDITY_SENSOR): cv.entity_id,
