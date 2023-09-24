@@ -44,6 +44,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_UNIQUE_ID): cv.string,
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Required(CONF_DEVICE_CODE): cv.positive_int,
+    vol.Required(CONF_CONTROLLER_DATA): cv.has_at_least_one_key(),
     vol.Optional(CONF_DELAY, default=DEFAULT_DELAY): cv.positive_float,
     vol.Optional(CONF_TEMPERATURE_SENSOR): cv.entity_id,
     vol.Optional(CONF_HUMIDITY_SENSOR): cv.entity_id,
