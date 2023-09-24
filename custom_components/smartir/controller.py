@@ -147,13 +147,13 @@ class ZHAController(AbstractController):
     async def send(self, command):
         """Send a command."""
         service_data = {
-            'ieee': self._controller_data.ieee,
-            'endpoint_id': self._controller_data.endpoint_id,
-            'cluster_type': self._controller_data.cluster_type,
-            'command_type': self._controller_data.command_type,
-            'cluster_id': self._controller_data.cluster_id,
-            'command': self._controller_data.command,
-            'params': self._controller_data.params % command
+            'ieee': self._controller_data.get("ieee"),
+            'endpoint_id': self._controller_data.get("endpoint_id"),
+            'cluster_type': self._controller_data.get("cluster_type"),
+            'command_type': self._controller_data.get("command_type"),
+            'cluster_id': self._controller_data.get("cluster_id"),
+            'command': self._controller_data.get("command"),
+            'params': self._controller_data.get("params") % command
         }
 
 
