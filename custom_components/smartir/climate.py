@@ -17,6 +17,7 @@ from homeassistant.const import (
 from homeassistant.core import callback
 from homeassistant.helpers.event import async_track_state_change
 import homeassistant.helpers.config_validation as cv
+import voluptuous as vol
 from homeassistant.helpers.restore_state import RestoreEntity
 from . import COMPONENT_ABS_DIR, Helper
 from .controller import get_controller
@@ -44,7 +45,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_UNIQUE_ID): cv.string,
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Required(CONF_DEVICE_CODE): cv.positive_int,
-    vol.Required(CONF_CONTROLLER_DATA): cv.has_at_least_one_key(),
+    vol.Required(CONF_CONTROLLER_DATA): vol.Any(),
     vol.Optional(CONF_DELAY, default=DEFAULT_DELAY): cv.positive_float,
     vol.Optional(CONF_TEMPERATURE_SENSOR): cv.entity_id,
     vol.Optional(CONF_HUMIDITY_SENSOR): cv.entity_id,
