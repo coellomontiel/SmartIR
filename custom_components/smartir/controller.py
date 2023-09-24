@@ -153,7 +153,9 @@ class ZHAController(AbstractController):
             'command_type': self._controller_data.get("command_type"),
             'cluster_id': self._controller_data.get("cluster_id"),
             'command': self._controller_data.get("command"),
-            'params': self._controller_data.get("params") % command
+            'params': {
+                'code': command
+            }
         }
 
 
